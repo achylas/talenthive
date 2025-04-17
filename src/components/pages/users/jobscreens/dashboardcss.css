@@ -1,0 +1,286 @@
+/* Dashboard.css - Talent Hive */
+
+:root {
+    --primary-blue: #1a56db;
+    --primary-dark-blue: #0f3e99;
+    --primary-light-blue: #3b82f6;
+    --accent-blue: #60a5fa;
+    --white: #ffffff;
+    --off-white: #f9fafb;
+    --light-gray: #e5e7eb;
+    --text-dark: #111827;
+    --text-medium: #4b5563;
+    --text-light: #9ca3af;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    
+    box-sizing: border-box;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    background-color: var(--off-white);
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+/* Dashboard Layout */
+.dashboard {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark-blue));
+    color: var(--white);
+    padding: 2rem 3rem; /* Increased padding */
+    text-align: center;
+    box-shadow: var(--shadow);
+    z-index: 10; /* Ensures header is always on top */
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header h1 {
+    font-size: 4rem; /* Increased font size */
+    font-weight: 700;
+    margin-bottom: 1rem; /* Increased margin */
+    letter-spacing: -0.025em;
+}
+
+.subtitle {
+    font-size: 1.5rem; /* Increased font size */
+    font-weight: 400;
+    opacity: 0.9;
+    max-width: 700px; /* Increased max width */
+    margin: 0 auto;
+}
+
+/* Search Container Styles */
+.search-container {
+    background-color: var(--primary-dark-blue);
+    padding: 5rem 3rem; /* Increased padding */
+    position: relative;
+    top: 12rem;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 0 0 8px 8px;
+    box-shadow: var(--shadow);
+    transform: translateY(-20px);
+}
+
+.search-title {
+    font-size: 2.5rem; /* Increased font size */
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2.5rem; /* Increased margin */
+}
+
+.search-bar {
+    display: flex;
+    max-width: 900px; /* Increased max width */
+    margin: 0 auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.search-input {
+    flex: 1;
+    padding: 1.25rem 2rem; /* Increased padding */
+    font-size: 1.2rem; /* Increased font size */
+    border: 2px solid var(--light-gray);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-input:focus {
+    border-color: var(--accent-blue);
+}
+
+.search-btn {
+    background-color: var(--accent-blue);
+    color: var(--white);
+    border: none;
+    padding: 1.25rem 2.5rem; /* Increased padding */
+    font-size: 1.2rem; /* Increased font size */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+    background-color: var(--primary-dark-blue);
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    padding: 3rem; /* Increased padding */
+    position: relative;
+    top: 8rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Categories Section */
+.categories {
+    margin-top: 4rem; /* Increased margin */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Increased min width for items */
+    gap: 2rem; /* Increased gap */
+}
+
+.category-card {
+    background-color: var(--white);
+    border-radius: 12px; /* More rounded */
+    padding: 2rem; /* Increased padding */
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.category-icon {
+    background-color: var(--accent-blue);
+    color: var(--white);
+    width: 70px; /* Increased size */
+    height: 70px; /* Increased size */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem; /* Increased margin */
+}
+
+.category-title {
+    font-size: 1.5rem; /* Increased font size */
+    font-weight: 700; /* Increased font weight */
+    margin-bottom: 1rem; /* Increased margin */
+}
+
+.category-description {
+    color: var(--text-medium);
+    font-size: 1rem; /* Increased font size */
+}
+
+/* Featured Section */
+.featured-section {
+    margin-top: 5rem; /* Increased margin */
+}
+
+.section-title {
+    font-size: 2rem; /* Increased font size */
+    font-weight: 700; /* Increased font weight */
+    margin-bottom: 2rem; /* Increased margin */
+    color: var(--text-dark);
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Increased min width for items */
+    gap: 2rem; /* Increased gap */
+}
+
+.featured-card {
+    background-color: var(--white);
+    border-radius: 12px; /* More rounded */
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.featured-image {
+    height: 200px; /* Increased height */
+    background-color: var(--light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.featured-content {
+    padding: 2rem; /* Increased padding */
+}
+
+.featured-title {
+    font-size: 1.5rem; /* Increased font size */
+    font-weight: 700; /* Increased font weight */
+    margin-bottom: 1rem; /* Increased margin */
+}
+
+.featured-description {
+    color: var(--text-medium);
+    margin-bottom: 1.5rem; /* Increased margin */
+    font-size: 1rem; /* Increased font size */
+}
+
+.featured-meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-light);
+    font-size: 0.875rem; /* Slightly increased font size */
+}
+
+/* Footer Styles */
+.footer {
+    background-color: var(--primary-dark-blue);
+    color: var(--white);
+    padding: 2rem; /* Increased padding */
+    text-align: center;
+    margin-top: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 3rem; /* Adjusted font size */
+    }
+
+    .subtitle {
+        font-size: 1.25rem; /* Adjusted font size */
+    }
+
+    .search-title {
+        font-size: 2rem; /* Adjusted font size */
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-input {
+        border-right: 2px solid var(--light-gray);
+        border-radius: 8px 8px 0 0;
+    }
+
+    .search-btn {
+        border-radius: 0 0 8px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 2.5rem 1.5rem; /* Adjusted padding */
+    }
+
+    .header h1 {
+        font-size: 2.5rem; /* Adjusted font size */
+    }
+
+    .search-container {
+        padding: 3rem 1.5rem; /* Adjusted padding */
+    }
+}

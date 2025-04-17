@@ -1,0 +1,102 @@
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  h1 {
+    margin-bottom: 4px;
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .card-header h2 {
+    margin-bottom: 6px;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  
+  .filters input,
+  .filters select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .loading,
+  .no-results {
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .btn-outline {
+    padding: 8px 12px;
+    border: 1px solid #000;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .btn-outline.small {
+    font-size: 0.9em;
+    padding: 6px 10px;
+  }
+  
+  .applicant-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .applicant-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+  }
+  
+  .status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  
+  .status.reviewed {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+  .status.pending {
+    background-color: #e5e7eb;
+    color: #374151;
+  }
+  .status.interviewed {
+    background-color: #bfdbfe;
+    color: #1e40af;
+  }
+  .status.hired {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  .status.rejected {
+    background-color: #fecaca;
+    color: #991b1b;
+  }
+  

@@ -1,0 +1,199 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+  
+body {
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+/* Job listing container */
+.job-listing-container {
+    margin: 0 auto;
+    padding: 50px; /* Increased padding for larger containers */
+}
+
+/* Main header */
+h1 {
+    color: #0a2e5c; /* Navy color */
+    margin-bottom: 40px; /* Increased margin for spacing */
+    text-align: center;
+    font-size: 40px; /* Increased font size */
+    font-weight: bold; /* Added bold styling */
+    text-transform: uppercase; /* Added uppercase styling for emphasis */
+}
+
+/* Filter styles */
+.filter-container {
+    display: flex;
+    flex-wrap: nowrap;
+    color: #040724;
+    gap: 30px; /* Increased gap between filters */
+    background-color: #ffffff;
+    padding: 25px 30px; /* Added extra padding for better spacing */
+    border-radius: 12px; /* Increased border radius for smoother edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Increased box-shadow for more depth */
+    margin-bottom: 40px; /* Increased margin for more space below */
+    overflow-x: auto;
+    border: 2px solid #1e88e5; /* Added border around filter container */
+}
+
+.filter-group {
+    color: #040724;
+    display: flex;
+    flex-direction: column;
+    min-width: 180px; /* Increased min-width for filter groups */
+    padding: 10px; /* Added padding to each filter group */
+}
+.filter-group select {
+    color: #000000; /* This sets the text color to black */
+}
+
+.filter-group label {
+    font-size: 16px; /* Increased font size */
+    margin-bottom: 10px; /* Increased margin */
+    color: #01070f; /* Navy color */
+    font-weight: bold;
+}
+
+.filter-group select {
+    padding: 12px 20px; /* Increased padding for better click area */
+    border: 2px solid #040724;
+    border-radius: 8px; /* Increased border radius for smoother look */
+    background-color: white;
+    font-size: 16px; /* Increased font size */
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.filter-group select:focus {
+    border-color: #1e88e5; /* Blue color */
+}
+
+/* Job category styles */
+.job-category {
+    margin-bottom: 60px; /* Increased margin-bottom */
+}
+
+.job-category h2 {
+    color: #0a2e5c; /* Navy color */
+    margin-bottom: 25px; /* Increased margin */
+    padding-bottom: 12px; /* Increased padding */
+    font-size: 32px; /* Increased font size */
+    font-weight: bold;
+    text-transform: capitalize; /* Capitalized first letter of each word */
+    border-bottom: 4px solid #1e88e5; /* Blue color */
+}
+
+/* Job cards container styles */
+.job-cards-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px; /* Increased gap between job cards */
+    padding: 15px 0;
+    scroll-behavior: smooth;
+}
+
+/* Job card styles */
+.job-card {
+    min-width: 350px; /* Increased width for job cards */
+    background-color: white;
+    border-radius: 12px; /* More rounded corners */
+    padding: 30px; /* Increased padding */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Increased shadow for depth */
+    border-left: 6px solid #1e88e5; /* Blue color */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-10px); /* Increased hover effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Increased box-shadow */
+}
+
+.job-card h3 {
+    color: #0a2e5c; /* Navy color */
+    margin-bottom: 15px; /* Increased margin */
+    font-size: 24px; /* Increased font size */
+    font-weight: bold;
+}
+
+.job-card .company {
+    color: #666;
+    font-size: 16px; /* Increased font size */
+    margin-bottom: 15px; /* Increased margin */
+}
+
+.job-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Increased gap */
+    margin-bottom: 20px; /* Increased margin */
+}
+
+.job-details span {
+    background-color: #e3f2fd; /* Light blue */
+    color: #1e88e5; /* Blue color */
+    padding: 8px 14px; /* Increased padding */
+    border-radius: 6px; /* More rounded corners */
+    font-size: 14px; /* Increased font size */
+    font-weight: bold;
+}
+
+/* Apply button */
+.apply-btn {
+    background-color: #0a2e5c; /* Navy color */
+    color: white;
+    border: none;
+    padding: 15px 25px; /* Increased padding */
+    border-radius: 6px; /* Increased border-radius for smoother edges */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 18px; /* Increased font size */
+}
+
+.apply-btn:hover {
+    background-color: #1e88e5; /* Blue color */
+}
+
+/* No jobs message */
+.no-jobs {
+    text-align: center;
+    padding: 50px; /* Increased padding */
+    color: #666;
+    font-style: italic;
+    background-color: white;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 20px; /* Increased font size */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .filter-group {
+        min-width: 180px; /* Increased min-width for better responsiveness */
+    }
+
+    .job-card {
+        min-width: 320px; /* Increased card size */
+        padding: 25px; /* Adjusted padding */
+    }
+
+    .job-category h2 {
+        font-size: 28px; /* Adjusted font size */
+    }
+
+    h1 {
+        font-size: 36px; /* Adjusted font size */
+    }
+}
