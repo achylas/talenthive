@@ -10,7 +10,7 @@ import {
   setDoc,
   getDoc
 } from 'firebase/firestore';
-import { useState } from 'react';
+import { useState } from 'react'; // <-- adjust path to your Firebase config
 
 export default function AuthPage() {
   const navigate = useNavigate();
@@ -19,35 +19,57 @@ export default function AuthPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-  const [role, setRole] = useState('jobseeker'); // default role
+  const [role, setRole] = useState('jobseeker');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       let userCred;
       let roleToNavigate;
-
+  
       if (isLogin) {
         // LOGIN
         userCred = await signInWithEmailAndPassword(auth, email, password);
-
-        // Check both subcollections to get role
-        const adminDoc = await getDoc(doc(db, "users/rkWLNhzKnYxJ5KI2WzBR/admin", userCred.user.uid));
-        const jobseekerDoc = await getDoc(doc(db, "users/rkWLNhzKnYxJ5KI2WzBR/jobseeker", userCred.user.uid));
-
-        if (adminDoc.exists()) {
-          roleToNavigate = "admin";
-        } else if (jobseekerDoc.exists()) {
-          roleToNavigate = "jobseeker";
-        } else {
+        const uid = userCred.user.uid;
+  
+        const rolesToCheck = ['admin', 'jobseeker', 'companies'];
+        for (const roleKey of rolesToCheck) {
+          const roleDoc = await getDoc(doc(db, roleKey, uid));
+          if (roleDoc.exists()) {
+            roleToNavigate = roleKey;
+            break;
+          }
+        }
+  
+        if (!roleToNavigate) {
           throw new Error("User role not found.");
         }
-
+  
+        // Navigation logic after login
+        if (roleToNavigate === 'admin') {
+          navigate('/admindashboard');
+        } else if (roleToNavigate === 'companies') {
+          // Check if company data exists
+          const companyDoc = await getDoc(doc(db, 'companies', uid));
+          if (companyDoc.exists() && companyDoc.data().companyName) {
+            navigate('/companydashboard'); // Already registered
+          } else {
+            navigate('/registercompany'); // Needs to fill details
+          }
+        } else {
+          navigate('/home');
+        }
+  
       } else {
         // SIGN UP
+        const validRoles = ['admin', 'jobseeker', 'companies'];
+        if (!validRoles.includes(role)) {
+          throw new Error('Invalid role selected.');
+        }
+  
         userCred = await createUserWithEmailAndPassword(auth, email, password);
-
+  
         const userData = {
           uid: userCred.user.uid,
           name: username,
@@ -55,25 +77,25 @@ export default function AuthPage() {
           role: role,
           createdAt: new Date(),
         };
-
-        // Save user to the selected role subcollection
-        await setDoc(doc(db, `users/rkWLNhzKnYxJ5KI2WzBR/${role}`, userCred.user.uid), userData);
-
-        roleToNavigate = role;
+  
+        await setDoc(doc(db, role, userCred.user.uid), userData);
+  
+        // Immediate redirect after sign-up
+        if (role === 'admin') {
+          navigate('/admindashboard');
+        } else if (role === 'companies') {
+          navigate('/registercompany'); // New companies go here
+        } else {
+          navigate('/home');
+        }
       }
-
-      // Navigate based on role
-      if (roleToNavigate === 'admin') {
-        navigate('/admindashboard');
-      } else {
-        navigate('/home');
-      }
-
+  
     } catch (err) {
       alert(err.message);
       console.error(err);
     }
   };
+  
 
   return (
     <div className="container">
@@ -115,6 +137,7 @@ export default function AuthPage() {
                       className="input-field"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
+                      required
                     />
                   </div>
 
@@ -125,9 +148,11 @@ export default function AuthPage() {
                       className="input-field"
                       value={role}
                       onChange={(e) => setRole(e.target.value)}
+                      required
                     >
                       <option value="admin">Admin</option>
                       <option value="jobseeker">Job Seeker</option>
+                      <option value="companies">Company</option>
                     </select>
                   </div>
                 </>
@@ -142,6 +167,7 @@ export default function AuthPage() {
                   className="input-field"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
 
@@ -153,6 +179,7 @@ export default function AuthPage() {
                   className="input-field"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
 
